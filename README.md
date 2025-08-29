@@ -15,3 +15,5 @@ This project allows users to:
 - Flask-Login
 - SQLite3
 - HTML / CSS / Bootstrap
+
+Developed By : Ashish Kumar
