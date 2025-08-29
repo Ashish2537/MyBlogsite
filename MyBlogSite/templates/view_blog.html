@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container mt-4">
+    <h2>{{ blog.title }}</h2>
+    <p><em>Posted on {{ blog.created_at.strftime('%Y-%m-%d') }}</em></p>
+    <p>{{ blog.content }}</p>
+    {% if blog.image %}
+      <img src="{{ url_for('static', filename='uploads/' + blog.image) }}" alt="Blog image" class="img-fluid">
+    {% endif %}
+    <hr>
+    <h4>Average Rating: {{ avg_rating }}</h4>
+    <h4>Comments:</h4>
+    {% for comment in comments %}
+      <div class="mb-3">
+        <p>{{ comment.blog_comment }}</p>
+        <small>Rating: {{ comment.blog_rating }} | Posted on {{ comment.created_at.strftime('%Y-%m-%d') }}</small>
+      </div>
+    {% else %}
+      <p>No comments yet.</p>
+    {% endfor %}
+    {% if current_user.is_authenticated %}
+      <hr>
+      <h4>Add a Comment</h4>
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+          {{ form.blog_comment.label }} {{ form.blog_comment(class="form-control") }}
+        </div>
+        <div class="mb-3">
+          {{ form.blog_rating.label }} 
+          {{ form.blog_rating(class="form-control") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+      </form>
+    {% else %}
+      <p>Please <a href="{{ url_for('login') }}">login</a> to comment.</p>
+    {% endif %}
+  </div>
+{% endblock %}
