@@ -1,1 +1,6 @@
-Flask\nFlask-SQLAlchemy\nFlask-Login\nWTForms\ngunicorn
+Flask
+Flask-SQLAlchemy
+Flask-Login
+WTForms
+gunicorn
+
