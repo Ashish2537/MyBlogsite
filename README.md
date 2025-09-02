@@ -7,7 +7,6 @@ A full-featured Blog Application built with **Flask**, **SQLite**, and **WTForms
 -> Create, Edit, Delete Blog Posts  
 -> Categories & Filters  
 -> Comments & Ratings  
--> Image Upload Support  
 -> SQLite Database with SQLAlchemy ORM  
 
 ## Live Demo  
