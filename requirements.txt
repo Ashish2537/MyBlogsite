@@ -3,5 +3,6 @@ Flask-SQLAlchemy
 Flask-Login
 Flask-WTF
 WTForms
+email_validator
 gunicorn
 
