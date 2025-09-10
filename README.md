@@ -1,24 +1,24 @@
 # MyBlogsite  
 
-A full-featured Blog Application built with **Flask**, **SQLite**, and **WTForms**, supporting user authentication, blog creation, comments, ratings, and image uploads.  
+A full-featured Blog Application built with Flask, SQLite, and WTForms.
+This app enables secure Authentication, Blog creation, Comments & Rating, Filtering, and interactive user engagement.  
 
 ## Features
--> User Registration & Login (Flask-Login + Password Hashing)  
--> Create, Edit, Delete Blog Posts  
--> Categories & Filters  
--> Comments & Ratings  
--> SQLite Database with SQLAlchemy ORM  
+• **Authentication** – User registration, login & logout with Flask-Login and password hashing
+• **Blog Management** – Create, edit, and delete blog posts with optional image uploads
+• **Categories & Filters** – Browse blogs by category or search by title
+• **Comments & Ratings** – Engage with posts through feedback and ratings
+• **Database** – SQLite powered with SQLAlchemy ORM 
 
-## Live Demo  
-👉 [MyBlogsite on Render](https://myblogsite-x307.onrender.com)  
-
-*(click the link to open the deployed app)*  
+## Live Demo  *(click the link to open the deployed app)* 
+• Azure App Service[View Deployment](flaskblogapp-cuekdkh3btcyaaeb.centralindia-01.azurewebsites.net)
+• Render[View Deployment](https://myblogsite-x307.onrender.com)   
 
 ## Tech Stack  
--> **Backend:** Flask, Flask-SQLAlchemy, Flask-Login, Flask-WTF  
--> **Frontend:** HTML, Bootstrap  
--> **Database:** SQLite3  
--> **Deployment:** Render + Gunicorn  
+• **Backend:** - Flask, Flask-SQLAlchemy, Flask-Login, Flask-WTF  
+• **Frontend:** - HTML, Bootstrap5  
+• **Database:** - SQLite3
+• **Deployment:** - Azure App Service, Render, Gunicorn
 
 ## Installation (Local Setup)
 ```bash
