@@ -16,7 +16,7 @@ This app enables secure Authentication, Blog creation, Comments & Rating, Filter
 • **Database** → SQLite powered with SQLAlchemy ORM 
 
 ## Live Demo  *(click the link to open the deployed app)* 
-• Azure App Service → [View Deployment](flaskblogapp-cuekdkh3btcyaaeb.centralindia-01.azurewebsites.net)
+• Azure App Service → [View Deployment](http://flaskblogapp-cuekdkh3btcyaaeb.centralindia-01.azurewebsites.net)
 <br>
 • Render → [View Deployment](https://myblogsite-x307.onrender.com)   
 
