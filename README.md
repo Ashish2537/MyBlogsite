@@ -5,13 +5,18 @@ This app enables secure Authentication, Blog creation, Comments & Rating, Filter
 
 ## Features
 • **Authentication** – User registration, login & logout with Flask-Login and password hashing
+<br>
 • **Blog Management** – Create, edit, and delete blog posts with optional image uploads
+<br>
 • **Categories & Filters** – Browse blogs by category or search by title
+<br>
 • **Comments & Ratings** – Engage with posts through feedback and ratings
+<br>
 • **Database** – SQLite powered with SQLAlchemy ORM 
 
 ## Live Demo  *(click the link to open the deployed app)* 
 • Azure App Service[View Deployment](flaskblogapp-cuekdkh3btcyaaeb.centralindia-01.azurewebsites.net)
+<br>
 • Render[View Deployment](https://myblogsite-x307.onrender.com)   
 
 ## Tech Stack  
