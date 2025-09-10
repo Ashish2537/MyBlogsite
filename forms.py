@@ -16,8 +16,9 @@ from wtforms.validators import (
     Optional
 )
 from wtforms.fields import EmailField
+from models import CategoryMaster
 
-# 🔒 Registration Form
+# Registration Form
 class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=50)])
     email = EmailField('Email', validators=[DataRequired(), Email()])
@@ -25,26 +26,31 @@ class RegisterForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password', message="Passwords must match.")])
     submit = SubmitField('Register')
 
-# 🔐 Login Form
+# Login Form
 class LoginForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
-# 📝 Blog Form
+# Blog Form
 class BlogForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired(), Length(max=100)])
     content = TextAreaField('Content', validators=[DataRequired()])
     category = SelectField('Category', coerce=int, validators=[DataRequired()])
     submit = SubmitField('Create Blog')
 
-# 💬 Comment + Rating Form
+    def __init__(self, *args, **kwargs):
+        super(BlogForm, self).__init__(*args, **kwargs)
+        categories = CategoryMaster.query.all()
+        self.category.choices = [(c.id, c.category_name) for c in CategoryMaster.query.all()]
+
+# Comment + Rating Form
 class CommentForm(FlaskForm):
     blog_comment = TextAreaField('Comment', validators=[DataRequired(), Length(max=500)])
     blog_rating = IntegerField('Rating (1 to 5)', validators=[DataRequired(), NumberRange(min=1, max=5)])
     submit = SubmitField('Submit')
 
-# 🔎 Filter + Search Form
+# Filter + Search Form
 class FilterForm(FlaskForm):
     category = SelectField("Category", choices=[], coerce=int, validators=[Optional()])
     search = StringField("Search by title", validators=[Optional()])

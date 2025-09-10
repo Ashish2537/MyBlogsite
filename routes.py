@@ -14,6 +14,16 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 db.init_app(app)
 
+with app.app_context():
+    db.create_all()  # creates all tables if they don't exist
+
+    # Add default categories if table is empty
+    if not CategoryMaster.query.first():
+        default_categories = ["Tech", "Lifestyle", "Finance", "Travel", "Food"]
+        for cat in default_categories:
+            db.session.add(CategoryMaster(category_name=cat))
+        db.session.commit()
+
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
