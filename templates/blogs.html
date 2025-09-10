@@ -4,22 +4,26 @@
     <h2>All Blogs</h2>
     <form method="GET" class="mb-3">
         {{ form.hidden_tag() }}
-        <div class="row">
+        <div class="row g-2">
             <div class="col-md-4">
-                {{ form.category.label }} {{ form.category(class="form-select") }}
+                {{ form.category.label(class="form-label") }}
+                {{ form.category(class="form-select") }}
             </div>
-            <div class="col-md-4">
-                {{ form.search.label }} {{ form.search(class="form-control") }}
+            <div class="col-md-5">
+                {{ form.search.label(class="form-label") }}
+                {{ form.search(class="form-control") }}
             </div>
-            <div class="col-md-4">
-                {{ form.submit(class="btn btn-primary") }}
+            <div class="col-md-3 d-flex align-items-end">
+                {{ form.submit(class="btn btn-primary w-100") }}
             </div>
         </div>
     </form>
     {% for blog in blogs %}
     <div class="card mb-3">
         <div class="card-body">
-            <h5 class="card-title"><a href="{{ url_for('view_blog', blog_id=blog.id) }}">{{ blog.title }}</a></h5>
+            <h5 class="card-title">
+                <a href="{{ url_for('view_blog', blog_id=blog.id) }}">{{ blog.title }}</a>
+            </h5>
             <p class="card-text">{{ blog.content[:100] }}...</p>
             <small class="text-muted">Posted on {{ blog.created_at.strftime('%Y-%m-%d') }}</small>
             {% if current_user.is_authenticated and current_user.id == blog.user_id %}

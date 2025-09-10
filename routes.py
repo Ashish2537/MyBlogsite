@@ -93,18 +93,28 @@ def create_blog():
 
     return render_template('create_blog.html', form=form)
 
-@app.route('/blogs', methods=['GET', 'POST'])
+@app.route('/blogs', methods=['GET'])
 def view_all_blogs():
-    form = FilterForm()
-    form.category.choices = [(0, "All Categories")] + [(c.id, c.category_name) for c in CategoryMaster.query.all()]
+    form = FilterForm(request.args)  # Pass GET params into form
 
-    blogs = BlogModel.query
-    if form.validate_on_submit():
-        if form.category.data and form.category.data != 0:
-            blogs = blogs.filter_by(category_id=form.category.data)
-        if form.search.data:
-            blogs = blogs.filter(BlogModel.title.ilike(f"%{form.search.data}%"))
-    blogs = blogs.all()
+    # Populate category dropdown
+    form.category.choices = [(0, "All Categories")] + [
+        (c.id, c.category_name) for c in CategoryMaster.query.all()
+    ]
+
+    # Base query
+    query = BlogModel.query
+
+    # Apply category filter
+    if form.category.data and form.category.data != 0:
+        query = query.filter_by(category_id=form.category.data)
+
+    # Apply search filter
+    if form.search.data:
+        query = query.filter(BlogModel.title.ilike(f"%{form.search.data}%"))
+
+    # Fetch blogs
+    blogs = query.order_by(BlogModel.created_at.desc()).all()
 
     return render_template('blogs.html', blogs=blogs, form=form)
 
